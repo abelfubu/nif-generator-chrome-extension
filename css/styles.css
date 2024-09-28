@@ -1,0 +1,22 @@
+.nif-generator-notification {
+  gap: 0.3rem;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #A6E3A1;
+  font-family: system-ui;
+  font-weight: semibold;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #23232350;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.4);
+
+  & > img {
+    margin-right: 6px;
+    border-radius: 5px;
+  }
+}
