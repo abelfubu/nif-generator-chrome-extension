@@ -3,7 +3,7 @@
   "name": "NIF Generator",
   "version": "1.0",
   "description": "Generates a valid NIF and copies it to the clipboard",
-  "permissions": ["clipboardWrite", "activeTab", "scripting", "notifications"],
+  "permissions": ["clipboardWrite", "activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
