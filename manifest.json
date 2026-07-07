@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "NIF Generator",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "Generates valid NIF, NIE, CIF, Codice Fiscale, and Partita IVA and copies them to the clipboard",
 	"permissions": [
 		"clipboardWrite",
