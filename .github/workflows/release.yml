@@ -19,7 +19,7 @@ jobs:
         run: |
           # Create a clean build directory without unnecessary files
           mkdir -p build
-          cp -r background.js content.js css icons manifest.json popup.html popup.js README.md build/
+          cp -r background.js codiceFiscale.js content.js css icons manifest.json popup.html popup.js README.md build/
           
           # Create zip file of the extension
           cd build
