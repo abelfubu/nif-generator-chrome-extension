@@ -95,13 +95,9 @@ test('generated ES IBANs pass ISO 7064 checksum', () => {
   }
 });
 
-test('ES control digit algorithm is self-consistent', () => {
-  // Round-trip: every digit 0-9 contributes so recomputing over the full CCC keeps validity
-  for (const es of esIbans) {
-    const ccc = es.slice(4);
-    const expected = `${IbanES.calculateControlDigit(ccc.slice(0, 8))}${IbanES.calculateControlDigit(ccc.slice(10))}`;
-    assert.strictEqual(ccc.slice(8, 10), expected, `bad CCC ctrl digits: ${es}`);
-  }
+test('ES control digits match known IBAN ES9121000418450200051332', () => {
+  assert.strictEqual(IbanES.calculateControlDigit('21000418'), 4);
+  assert.strictEqual(IbanES.calculateControlDigit('0200051332'), 5);
 });
 
 test('IT and ES IBANs never collide in format', () => {

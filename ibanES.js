@@ -1,19 +1,24 @@
 // Spanish IBAN (24 chars): ES + 2 check + CCC (4 entity + 4 branch + 2 ctrl digits + 10 account).
-// The 2 inner control digits use the Spanish CCC mod-10 algorithm (weights 1,2 alternating).
+// Inner control digits use the Banco de Espana mod-11 algorithm with weights
+// 1,2,4,8,5,10,9,7,3,6; shorter inputs are left-padded with zeros. Verified against
+// the official example IBAN ES9121000418450200051332 (ctrl digits 4 and 5).
 
 const IbanES = (function () {
   const Shared = (typeof module !== 'undefined' && module.exports)
     ? require('./iban.js')
     : IBAN; // global from iban.js (browser)
-  // Spanish control digit: alternating weights 1,2 from the left (first digit x1);
-  // products > 9 get -9; control = 10 - (sum mod 10), with 10 -> 0.
+
+  const weights = [1, 2, 4, 8, 5, 10, 9, 7, 3, 6];
+
+  // str: up to 10 digits; left-padded with zeros
   function calculateControlDigit(str) {
+    const padded = str.padStart(10, '0');
     let sum = 0;
-    for (let i = 0; i < str.length; i++) {
-      const product = parseInt(str[i], 10) * (i % 2 === 0 ? 1 : 2);
-      sum += product > 9 ? product - 9 : product;
+    for (let i = 0; i < 10; i++) {
+      sum += parseInt(padded[i], 10) * weights[i];
     }
-    return (10 - (sum % 10)) % 10;
+    const dc = 11 - (sum % 11);
+    return dc === 11 ? 0 : dc === 10 ? 1 : dc;
   }
 
   // Real Spanish bank entity + branch codes (prefix 00 pad to 4 digits)
