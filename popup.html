@@ -1,88 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Document Generator</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 12px;
-      width: 220px;
-      background-color: #101010; /* Vesper base00 */
-      color: #FFFFFF; /* Vesper base05 */
-      border: 1px solid #232323; /* Vesper base02 */
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    :root {
+      /* Light (system default) */
+      --bg: #F5F5F6;
+      --surface: #FFFFFF;
+      --surface-hover: #FAFAFB;
+      --border: rgba(16, 16, 20, 0.08);
+      --border-accent: rgba(2, 132, 199, 0.5);
+      --text: #101014;
+      --text-dim: #6B7280;
+      --accent: #0284C7;
+      --accent-soft: rgba(2, 132, 199, 0.10);
     }
-    h3 {
-      margin: 0 0 12px 0;
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* fab.com palette */
+        --bg: #101014;
+        --surface: #202024;
+        --surface-hover: #26262B;
+        --border: rgba(255, 255, 255, 0.07);
+        --border-accent: rgba(97, 205, 255, 0.45);
+        --text: #F4F4F5;
+        --text-dim: #9CA0AA;
+        --accent: #61CDFF;
+        --accent-soft: rgba(97, 205, 255, 0.10);
+      }
+    }
+
+    * {
+      margin: 0;
       padding: 0;
-      font-size: 16px;
-      color: #FFC799; /* Vesper base0D - Vesper accent */
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+      padding: 14px;
+      width: 236px;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h3 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
       text-align: center;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #232323; /* Vesper base02 */
+      padding: 4px 0 14px;
+      color: var(--text);
     }
+
+    h3::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      margin: 8px auto 0;
+      border-radius: 1px;
+    }
+
     .section {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
+
+    .section:last-child {
+      margin-bottom: 2px;
+    }
+
     .section-title {
-      font-size: 12px;
-      color: #A0A0A0; /* Vesper base04 */
-      margin: 0 0 6px 0;
-      padding-left: 4px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-dim);
+      margin: 0 2px 6px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.1em;
     }
+
     .option {
-      padding: 10px;
-      cursor: pointer;
-      margin-bottom: 6px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      background-color: #1C1C1C; /* Vesper base01 */
-      color: #FFFFFF; /* Vesper base05 */
-      font-size: 14px;
       display: flex;
       align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      margin-bottom: 5px;
+      cursor: pointer;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
     }
+
     .option:hover {
-      background-color: #232323; /* Vesper base02 */
-      transform: translateY(-1px);
+      background: var(--surface-hover);
+      border-color: var(--border-accent);
     }
+
     .option:active {
-      transform: translateY(0);
+      transform: scale(0.98);
     }
+
     .flag {
-      margin-right: 8px;
-      font-size: 16px;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      line-height: 20px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 4px;
+      padding: 3px 5px;
+      min-width: 22px;
       text-align: center;
-      background-color: #838383; /* Vesper base0C */
-      border-radius: 3px;
-      font-size: 10px;
-      font-weight: bold;
     }
   </style>
 </head>
 <body>
   <h3>Document Generator</h3>
-  
+
   <div class="section">
-    <div class="section-title">SPAIN</div>
+    <div class="section-title">Spain</div>
     <div class="option" data-type="NIF"><span class="flag">ES</span> NIF</div>
     <div class="option" data-type="NIE"><span class="flag">ES</span> NIE</div>
     <div class="option" data-type="CIF"><span class="flag">ES</span> CIF</div>
+    <div class="option" data-type="ibanES"><span class="flag">ES</span> IBAN</div>
   </div>
-  
+
   <div class="section">
-    <div class="section-title">ITALY</div>
+    <div class="section-title">Italy</div>
     <div class="option" data-type="codiceFiscale"><span class="flag">IT</span> Codice Fiscale</div>
     <div class="option" data-type="partitaIVA"><span class="flag">IT</span> Partita IVA</div>
+    <div class="option" data-type="ibanITA"><span class="flag">IT</span> IBAN</div>
   </div>
-  
+
+  <script src="iban.js"></script>
+  <script src="ibanITA.js"></script>
+  <script src="ibanES.js"></script>
   <script src="codiceFiscale.js"></script>
   <script src="popup.js"></script>
 </body>

@@ -2,7 +2,8 @@ const CodiceFiscale = (function () {
   const vowels = 'AEIOU';
   const consonants = 'BCDFGHJKLMNPQRSTVWXYZ';
   const monthCodes = 'ABCDEHLMPRST';
-  const placesOfBirth = ['R001', 'M001', 'N001', 'T001', 'F001'];
+  // Real codici catastali (Belfiore codes)
+  const placesOfBirth = ['H501', 'M001', 'N001', 'F001', 'D612'];
 
   function isVowel(char) {
     return vowels.includes(char.toUpperCase());
