@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         case 'partitaIVA':
           result = generatePartitaIVA();
           break;
+        case 'ibanITA':
+          result = IbanITA.generateIbanITA();
+          break;
+        case 'ibanES':
+          result = IbanES.generateIbanES();
+          break;
       }
       
       navigator.clipboard.writeText(result).then(() => {
