@@ -1,6 +1,6 @@
 # NIF Generator Chrome Extension
 
-A Chrome extension that generates and copies valid identification numbers for Spain (NIF, NIE, CIF) and Italy (Codice Fiscale, Partita IVA).
+A Chrome extension that generates and copies synthetic identification numbers for testing in Spain (NIF, NIE, CIF) and Italy (Codice Fiscale, Partita IVA). Structural validity does not guarantee official registration. Codice Fiscale values are not verified in Anagrafe tributaria.
 
 ## Language
 
