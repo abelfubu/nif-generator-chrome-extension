@@ -2,8 +2,9 @@ const CodiceFiscale = (function () {
   const vowels = 'AEIOU';
   const consonants = 'BCDFGHJKLMNPQRSTVWXYZ';
   const monthCodes = 'ABCDEHLMPRST';
-  // Real codici catastali (Belfiore codes)
-  const placesOfBirth = ['H501', 'M001', 'N001', 'F001', 'D612'];
+  // Active municipalities: Roma, Milano, Firenze, Torino, Napoli.
+  // Synthetic codes are not guaranteed to be registered in Anagrafe tributaria.
+  const placesOfBirth = ['H501', 'F205', 'D612', 'L219', 'F839'];
 
   function isVowel(char) {
     return vowels.includes(char.toUpperCase());

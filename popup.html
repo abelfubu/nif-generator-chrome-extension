@@ -107,6 +107,13 @@
       transform: scale(0.98);
     }
 
+    .test-data-note {
+      font-size: 10px;
+      line-height: 1.4;
+      color: var(--text-dim);
+      margin: 6px 2px;
+    }
+
     .flag {
       font-size: 9px;
       font-weight: 700;
@@ -133,7 +140,8 @@
 
   <div class="section">
     <div class="section-title">Italy</div>
-    <div class="option" data-type="codiceFiscale"><span class="flag">IT</span> Codice Fiscale</div>
+    <div class="option" data-type="codiceFiscale" title="Synthetic test data. Not verified in Anagrafe tributaria."><span class="flag">IT</span> Codice Fiscale</div>
+    <p class="test-data-note">Codice Fiscale: synthetic test data. Not registry-verified.</p>
     <div class="option" data-type="partitaIVA"><span class="flag">IT</span> Partita IVA</div>
     <div class="option" data-type="ibanITA"><span class="flag">IT</span> IBAN</div>
   </div>
