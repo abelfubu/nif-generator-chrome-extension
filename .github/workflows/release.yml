@@ -15,11 +15,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run tests
+        run: npm test
+
       - name: Create extension package
         run: |
           # Create a clean build directory without unnecessary files
           mkdir -p build
-          cp -r background.js codiceFiscale.js content.js css icons manifest.json popup.html popup.js README.md build/
+          cp -r background.js codiceFiscale.js iban.js ibanES.js ibanITA.js content.js css icons manifest.json popup.html popup.js README.md build/
           
           # Create zip file of the extension
           cd build
