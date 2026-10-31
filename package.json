@@ -1,9 +1,9 @@
 {
   "name": "nif-generator-chrome-extension",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Generates synthetic NIF, NIE, CIF, Codice Fiscale, and Partita IVA for testing and copies them to the clipboard",
   "scripts": {
-    "test": "node test/codiceFiscale.test.js"
+    "test": "node test/codiceFiscale.test.js && node test/iban.test.js && node test/release.test.js"
   },
   "devDependencies": {},
   "private": true
